@@ -1,4 +1,4 @@
-package com.osu.cse3341.Scanner;
+package Scanner;
 import java.util.HashMap;
 
 public class ScannerUtil {

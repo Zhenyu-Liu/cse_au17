@@ -1,7 +1,6 @@
-package com.osu.cse3341;
-import com.osu.cse3341.Parser.Out;
-import com.osu.cse3341.Scanner.Scanner;
-import com.osu.cse3341.Scanner.TOKEN;
+import Parser.Out;
+import Scanner.Scanner;
+import Scanner.TOKEN;
 import java.io.IOException;
 
 public class Interpreter {

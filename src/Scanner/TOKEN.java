@@ -1,4 +1,4 @@
-package com.osu.cse3341.Scanner;
+package Scanner;
 
 /**
  * Created by liuzhenyu on 9/25/17.

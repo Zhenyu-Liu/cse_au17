@@ -1,4 +1,4 @@
-package com.osu.cse3341.Scanner;
+package Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
