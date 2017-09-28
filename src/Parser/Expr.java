@@ -27,10 +27,6 @@ public class Expr {
             scanner.nextToken(); // consume -
             expr = new Expr(scanner);
             expr.parse();
-        } else {
-            // Error: not +/-/
-            System.out.println("ERROR: Invalid <expr>, but got " + scanner.getCurrentToken().val);
-            System.exit(2);
         }
     }
 
