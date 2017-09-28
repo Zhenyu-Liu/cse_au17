@@ -4,11 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Scanner {
-    BufferedReader in;
-    int buffer = Integer.MIN_VALUE;
-    private static final String endToken = ";|,|:|!|(|)|\\[|\\]|=|<|>|\\+|-|\\*|\\|";
-    TokenItem currentToken;
-    ScannerUtil util = new ScannerUtil();
+    private BufferedReader in;
+    private int buffer = Integer.MIN_VALUE;
+    private TokenItem currentToken;
+    private ScannerUtil util = new ScannerUtil();
 
     public Scanner(String file) throws IOException {
         in = new BufferedReader(new FileReader(file));
@@ -35,12 +34,14 @@ public class Scanner {
         } else if (Character.isLetter(next)) {
             // Letter
             StringBuilder sb = new StringBuilder();
-            while (Character.isLetter(next)) {
+            while (Character.isLetter(next) || Character.isDigit(next)) {
                 sb.append((char) next);
                 next = in.read();
             }
             buffer = next;
-            currentToken = new TokenItem(TOKEN.ID, sb.toString());
+            String token = sb.toString();
+            TOKEN type = util.getType(token);
+            currentToken = new TokenItem(type, token);
         } else if (Character.isDigit(next)) {
             // Digit
             int digit = 0;

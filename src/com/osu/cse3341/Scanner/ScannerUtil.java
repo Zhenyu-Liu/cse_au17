@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 public class ScannerUtil {
 
-    private final String constant = "-?[0-9]+";
     private HashMap<Character, TOKEN> map = new HashMap<Character, TOKEN>();
     private HashMap<String, TOKEN> keyword_map = new HashMap<String, TOKEN>();
 
@@ -16,18 +15,25 @@ public class ScannerUtil {
         map.put('-', TOKEN.MINUS);
         map.put('*', TOKEN.MULTIPLY);
         map.put('=', TOKEN.EQUAL);
-//        map.put('|', TOKEN.BAR);
+        map.put('|', TOKEN.BAR);
         map.put(':', TOKEN.COLON);
-//        map.put('!', TOKEN.MARK);
-//        map.put('<', TOKEN.LESS);
+        map.put('!', TOKEN.MARK);
+        map.put('<', TOKEN.LESS);
 
         keyword_map.put("output", TOKEN.OUTPUT);
     }
 
-    public TOKEN getType(char c) {
+    TOKEN getType(char c) {
         return map.get(c);
     }
-    public TOKEN getType(String s) {
-        return keyword_map.get(s);
+    TOKEN getType(String s) {
+
+        if (s.matches("[A-Z]+|[a-z]+")) {
+            s = s.toLowerCase();
+        }
+        if (keyword_map.containsKey(s)) {
+            return keyword_map.get(s);
+        }
+        return TOKEN.ID;
     }
 }
