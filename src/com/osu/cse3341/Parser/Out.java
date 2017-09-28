@@ -16,8 +16,8 @@ public class Out {
         expr.parse();
         if (scanner.getCurrentToken().type != TOKEN.SEMICOLON) {
             // Error missing ;
-            System.out.println("ERROR: missing \";\" " + scanner.getCurrentToken().val);
-            System.exit(2);
+            System.out.println("ERROR: missing \";\" and get " + scanner.getCurrentToken().val);
+            System.exit(1);
         }
    }
 

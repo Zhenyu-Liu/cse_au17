@@ -29,8 +29,8 @@ public class Expr {
             expr.parse();
         } else {
             // Error: not +/-/
-            // System.out.println("ERROR: missing <expr>, but got " + scanner.getCurrentToken().val);
-            // System.exit(3);
+            System.out.println("ERROR: Invalid <expr>, but got " + scanner.getCurrentToken().val);
+            System.exit(2);
         }
     }
 

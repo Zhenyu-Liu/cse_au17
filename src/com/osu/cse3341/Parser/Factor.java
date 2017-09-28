@@ -35,7 +35,10 @@ public class Factor {
             scanner.nextToken(); //consume "("
             this.expr = new Expr(scanner);
             this.expr.parse();
-            scanner.nextToken(); // consume")" TODO what if missing or not a )
+            if (scanner.getCurrentToken().type != TOKEN.RPAREN) {
+                System.out.println("ERROR: Miss \")\" but get " + scanner.getCurrentToken().val);
+                System.exit(4);
+            }
         } else {
             // TODO error checking
         }
