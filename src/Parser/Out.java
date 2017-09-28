@@ -19,6 +19,12 @@ public class Out {
             System.out.println("ERROR: missing \";\" and get " + scanner.getCurrentToken().val);
             System.exit(1);
         }
+
+        scanner.nextToken();
+
+        if (scanner.getCurrentToken().type != TOKEN.EOF) {
+            System.out.println("ERROR: missing/extra \" ;\" but get " + scanner.getCurrentToken().val);
+        }
    }
 
     public void print(int val) {

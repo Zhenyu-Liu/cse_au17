@@ -40,7 +40,8 @@ public class Factor {
                 System.exit(4);
             }
         } else {
-            // TODO error checking
+            System.out.println("Error: Not valid id/const/or miss (, but get " + scanner.getCurrentToken().val);
+            System.exit(4);
         }
     }
 
@@ -54,7 +55,9 @@ public class Factor {
         } else if (expr != null) {
             return expr.exec();
         } else {
-            return 0; // error
+            System.out.println("ERROR: Invalid CONST or ID ");
+            System.exit(3);
         }
+        return 0;
     }
 }
