@@ -1,1 +1,4 @@
-output  x;
+output
+x * x *x *x *x
+
+;
