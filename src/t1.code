@@ -1,0 +1,8 @@
+program
+  int x,y,z;
+  begin
+    z := 100 + 3;
+    y := 200 + z;
+    output y;
+    output x;
+end

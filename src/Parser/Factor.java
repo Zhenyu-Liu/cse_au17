@@ -8,14 +8,14 @@ import java.io.IOException;
 public class Factor {
 
     private int value;
-    private String id;
     private Scanner scanner;
     private Expr expr;
+    private ID_MAP id_map;
 
-    public Factor(Scanner scanner) {
+    public Factor(Scanner scanner, ID_MAP id_map) {
         this.scanner = scanner;
-        id = null;
         value = Integer.MIN_VALUE;
+        this.id_map = id_map;
     }
 
     public void parse() throws IOException {
@@ -24,16 +24,12 @@ public class Factor {
             String val = scanner.getCurrentToken().val;
             value = Integer.parseInt(val);
         } else if (scanner.getCurrentToken().type == TOKEN.ID) {
-            // for project 1
-            if (scanner.getCurrentToken().val.equals("x")) {
-                value = 1;
-            }
-            if (scanner.getCurrentToken().val.equals("y")) {
-                value = 2;
+            if (id_map != null) {
+                value = id_map.get(scanner.getCurrentToken().val);
             }
         } else if (scanner.getCurrentToken().type == TOKEN.LPAREN) {
             scanner.nextToken(); //consume "("
-            this.expr = new Expr(scanner);
+            this.expr = new Expr(scanner, id_map);
             this.expr.parse();
             if (scanner.getCurrentToken().type != TOKEN.RPAREN) {
                 System.out.println("ERROR: Miss \")\" but get " + scanner.getCurrentToken().val);

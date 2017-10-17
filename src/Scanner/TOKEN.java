@@ -19,5 +19,15 @@ public enum TOKEN {
     EOF,
     OUTPUT,
     ID,
-    CONST
+    CONST,
+    LEQ,
+    PROG,
+    BEGIN,
+    INPUT,
+    IF,
+    THEN,
+    ELSE,
+    ENDIF,
+    END,
+    INT
 }

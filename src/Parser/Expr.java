@@ -9,23 +9,25 @@ public class Expr {
     private Term term;
     private Scanner scanner;
     private int flag = 0; // 0 => term; 1 => +; -1 => -
+    private ID_MAP id_map;
 
-    public Expr(Scanner scanner) {
+    public Expr(Scanner scanner, ID_MAP id_map) {
+        this.id_map = id_map;
         this.scanner = scanner;
     }
 
     public void parse() throws IOException {
-        term = new Term(scanner);
+        term = new Term(scanner, id_map);
         term.parse();
         if (scanner.getCurrentToken().type == TOKEN.PLUS) {
             flag = 1;
             scanner.nextToken(); // consume +
-            expr = new Expr(scanner);
+            expr = new Expr(scanner, id_map);
             expr.parse();
         } else if (scanner.getCurrentToken().type == TOKEN.MINUS) {
             flag = -1;
             scanner.nextToken(); // consume -
-            expr = new Expr(scanner);
+            expr = new Expr(scanner, id_map);
             expr.parse();
         }
     }

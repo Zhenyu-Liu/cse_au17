@@ -1,4 +1,5 @@
 package Scanner;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,12 +50,23 @@ public class Scanner {
                 digit = digit * 10 + next - '0';
                 next = in.read();
             }
-             buffer = next;
+            buffer = next;
             currentToken = new TokenItem(TOKEN.CONST, digit + "");
         } else {
             // NOT Digit NOT Letter NOT EOF then it's a symbol
-            TOKEN type = util.getType((char) next);
-            currentToken = new TokenItem(type, Character.toString((char) next));
+            TOKEN type;
+            if (next == '<') {
+                int tmp = in.read();
+                if (tmp == '=') {
+                    type = util.getType("<=");
+                    currentToken = new TokenItem(type, "<=");
+                } else {
+                    buffer = tmp;
+                }
+            } else {
+                type = util.getType((char) next);
+                currentToken = new TokenItem(type, Character.toString((char) next));
+            }
         }
     }
 

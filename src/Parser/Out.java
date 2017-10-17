@@ -6,13 +6,16 @@ import java.io.IOException;
 public class Out {
     private Expr expr;
     private Scanner scanner;
+    private ID_MAP id_map;
 
-    public Out(Scanner scanner) {
+    public Out(Scanner scanner, ID_MAP id_map) {
         this.scanner = scanner;
+        this.id_map = id_map;
     }
 
     public void parse() throws IOException {
-        expr = new Expr(scanner);
+        // TODO Consume output here
+        expr = new Expr(scanner, id_map);
         expr.parse();
         if (scanner.getCurrentToken().type != TOKEN.SEMICOLON) {
             // Error missing ;
@@ -22,9 +25,9 @@ public class Out {
 
         scanner.nextToken();
 
-        if (scanner.getCurrentToken().type != TOKEN.EOF) {
-            System.out.println("ERROR: missing/extra \" ;\" but get " + scanner.getCurrentToken().val);
-        }
+//        if (scanner.getCurrentToken().type != TOKEN.EOF) {
+//            System.out.println("ERROR: missing/extra \" ;\" but get " + scanner.getCurrentToken().val);
+//        }
    }
 
     public void print(int val) {

@@ -21,6 +21,16 @@ public class ScannerUtil {
         map.put('<', TOKEN.LESS);
 
         keyword_map.put("output", TOKEN.OUTPUT);
+        keyword_map.put("<=", TOKEN.LEQ);
+        keyword_map.put("program", TOKEN.PROG);
+        keyword_map.put("begin", TOKEN.BEGIN);
+        keyword_map.put("input", TOKEN.INPUT);
+        keyword_map.put("if", TOKEN.IF);
+        keyword_map.put("then", TOKEN.THEN);
+        keyword_map.put("else", TOKEN.ELSE);
+        keyword_map.put("endif", TOKEN.ENDIF);
+        keyword_map.put("end", TOKEN.END);
+        keyword_map.put("int", TOKEN.INT);
     }
 
     TOKEN getType(char c) {
